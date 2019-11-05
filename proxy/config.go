@@ -32,6 +32,7 @@ type Proxy struct {
 	BehindReverseProxy   bool   `json:"behindReverseProxy"`
 	BlockRefreshInterval string `json:"blockRefreshInterval"`
 	Difficulty           int64  `json:"difficulty"`
+	DifficultyNiceHash   float64 `json:"difficultyNiceHash"`
 	MiningFee            float64 `json:"miningFee"`
 	StateUpdateInterval  string `json:"stateUpdateInterval"`
 	HashrateExpiration   string `json:"hashrateExpiration"`
@@ -41,10 +42,18 @@ type Proxy struct {
 	MaxFails    int64 `json:"maxFails"`
 	HealthCheck bool  `json:"healthCheck"`
 
+	StratumNiceHash StratumNiceHash `json:"stratum_nice_hash"`
 	Stratum Stratum `json:"stratum"`
 }
 
 type Stratum struct {
+	Enabled bool   `json:"enabled"`
+	Listen  string `json:"listen"`
+	Timeout string `json:"timeout"`
+	MaxConn int    `json:"maxConn"`
+}
+
+type StratumNiceHash struct {
 	Enabled bool   `json:"enabled"`
 	Listen  string `json:"listen"`
 	Timeout string `json:"timeout"`
